@@ -32,17 +32,18 @@ export default function WaitlistSection() {
     }
     setStatus("loading");
     try {
-      const res = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, name }),
-      });
-      const data = await res.json();
-      if (!res.ok) {
-        setErrorMsg(data.error || "오류가 발생했습니다. 다시 시도해주세요.");
+      const scriptUrl = process.env.NEXT_PUBLIC_GOOGLE_APPS_SCRIPT_URL;
+      if (!scriptUrl) {
+        setErrorMsg("서버 설정 오류입니다.");
         setStatus("error");
         return;
       }
+      await fetch(scriptUrl, {
+        method: "POST",
+        mode: "no-cors",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, name, submittedAt: new Date().toISOString() }),
+      });
       setStatus("success");
     } catch {
       setErrorMsg("네트워크 오류가 발생했습니다. 다시 시도해주세요.");
