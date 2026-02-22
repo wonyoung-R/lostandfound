@@ -34,7 +34,8 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
     }, 150);
   };
 
-  const imageSrc = `/images/products/${product.prefix}_${activeView}.jpg`;
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+  const imageSrc = `${basePath}/images/products/${product.prefix}_${activeView}.jpg`;
   const isEven = index % 2 === 0;
 
   return (
