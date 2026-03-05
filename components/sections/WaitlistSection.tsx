@@ -77,9 +77,8 @@ export default function WaitlistSection() {
       <div className="relative max-w-screen-xl mx-auto">
         {/* Section header */}
         <div className="flex items-center gap-4 mb-16 reveal">
-          <span className="font-mono text-[9px] tracking-superwide text-laf-iron">04</span>
           <div className="h-px w-12 bg-laf-iron/20" />
-          <span className="font-mono text-[9px] tracking-superwide text-laf-zinc">WAITLIST</span>
+          <span className="font-mono text-[9px] tracking-superwide text-laf-zinc">SUBSCRIBE</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
@@ -92,35 +91,7 @@ export default function WaitlistSection() {
               먼저<br />
               만나보세요.
             </h2>
-            <p
-              className="font-body text-laf-iron text-[15px] leading-[2] reveal mb-4"
-              style={{ transitionDelay: "0.2s" }}
-            >
-              SS 2025 컬렉션 론칭 전 웨이트리스트에 등록하세요.
-              가장 먼저 소식을 받고, 얼리버드 혜택을 누릴 수 있습니다.
-            </p>
-            <p
-              className="font-mono text-[10px] tracking-wider text-laf-zinc reveal"
-              style={{ transitionDelay: "0.3s" }}
-            >
-              EARLY ACCESS — FIRST TO KNOW — EXCLUSIVE OFFER
-            </p>
-
-            {/* What to expect */}
-            <div className="mt-12 space-y-4 reveal" style={{ transitionDelay: "0.4s" }}>
-              {[
-                "론칭 사전 알림 이메일",
-                "얼리버드 구매 우선권",
-                "브랜드 스토리 & 비하인드 소식",
-              ].map((item) => (
-                <div key={item} className="flex items-center gap-3">
-                  <div className="w-1 h-1 rounded-full bg-laf-iron/40 shrink-0" />
-                  <span className="font-mono text-[10px] tracking-wider text-laf-iron">
-                    {item}
-                  </span>
-                </div>
-              ))}
-            </div>
+            
           </div>
 
           {/* Right: Form */}
@@ -135,11 +106,11 @@ export default function WaitlistSection() {
                     등록 완료
                   </p>
                   <p className="font-body text-[13px] text-laf-iron leading-relaxed">
-                    웨이트리스트에 등록되었습니다.<br />
+                    리스트에 등록되었습니다.<br />
                     론칭 소식을 가장 먼저 보내드릴게요.
                   </p>
                   <p className="font-mono text-[9px] tracking-wider text-laf-zinc mt-8">
-                    LOST and FOUND — SS 2025
+                    LOST and FOUND
                   </p>
                 </div>
               </div>
@@ -196,7 +167,7 @@ export default function WaitlistSection() {
                 {/* Fine print */}
                 <div className="px-8 py-4 border-t border-laf-iron/10">
                   <p className="font-mono text-[8px] tracking-wider text-laf-iron/50">
-                    이메일은 론칭 알림 목적으로만 사용됩니다. 언제든지 수신 거부할 수 있습니다.
+                    이메일은 알림 목적으로만 사용됩니다. 언제든지 수신 거부할 수 있습니다.
                   </p>
                 </div>
               </form>
@@ -213,7 +184,7 @@ export default function WaitlistSection() {
                 ))}
               </div>
               <p className="font-mono text-[10px] tracking-wider text-laf-iron">
-                이미 <span className="text-laf-black font-medium">120+</span>명이 대기 중
+                이미 <span className="text-laf-black font-medium">100+</span>명이 대기 중
               </p>
             </div>
           </div>

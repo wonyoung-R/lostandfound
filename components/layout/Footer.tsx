@@ -11,8 +11,7 @@ export default function Footer() {
               FOUND
             </div>
             <p className="font-mono text-[10px] tracking-wider text-laf-steel leading-relaxed max-w-xs">
-              도심의 일상에 원래 있던 것처럼.<br />
-              Always been there.
+              마치 원래 내 것이었던 듯이.
             </p>
           </div>
 

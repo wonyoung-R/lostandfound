@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
@@ -13,10 +14,10 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { label: "COLLECTION", href: "#collection" },
     { label: "STORY", href: "#story" },
+    { label: "COLLECTION", href: "#collection" },
     { label: "LOOKBOOK", href: "#lookbook" },
-    { label: "WAITLIST", href: "#waitlist" },
+    { label: "SUBSCRIBE", href: "#subscribe" },
   ];
 
   return (
@@ -31,11 +32,15 @@ export default function Header() {
         <div className="max-w-screen-xl mx-auto px-6 md:px-10 lg:px-16">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a
-              href="#"
-              className="font-display text-laf-offwhite tracking-widest text-sm font-medium uppercase"
-            >
-              L&F
+            <a href="#" className="flex items-center">
+              <Image
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logo/lkogo.png`}
+                alt="L&F"
+                width={80}
+                height={32}
+                className="object-contain"
+                priority
+              />
             </a>
 
             {/* Desktop Nav */}
@@ -104,7 +109,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="mt-16 font-mono text-[10px] tracking-widest text-laf-steel">
-          LOST and FOUND — SS 2025
+          LOST and FOUND — dfsafdsafdfdf
         </div>
       </div>
     </>

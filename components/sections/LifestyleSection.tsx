@@ -2,6 +2,16 @@
 
 import { useEffect, useRef } from "react";
 
+// 서버/클라이언트 hydration 불일치 방지 — Math.random() 결과를 모듈 레벨 상수로 고정
+const BUILDING_WINDOWS = [60, 85, 70, 100, 45, 75, 55, 90, 65].map(() =>
+  [...Array(6)].map(() => (Math.random() > 0.5 ? 0.15 : 0))
+);
+const RAIN_STREAKS = [...Array(20)].map(() => ({
+  height: 30 + Math.random() * 40,
+  left: Math.random() * 100,
+  top: Math.random() * 60,
+}));
+
 // CSS abstract urban placeholder
 function UrbanPlaceholder({
   variant,
@@ -72,11 +82,11 @@ function UrbanPlaceholder({
               >
                 {/* Windows */}
                 <div className="p-1 grid grid-cols-2 gap-0.5">
-                  {[...Array(6)].map((_, j) => (
+                  {BUILDING_WINDOWS[i].map((opacity, j) => (
                     <div
                       key={j}
                       className="h-1 bg-white/5"
-                      style={{ opacity: Math.random() > 0.5 ? 0.15 : 0 }}
+                      style={{ opacity }}
                     />
                   ))}
                 </div>
@@ -118,14 +128,14 @@ function UrbanPlaceholder({
       elements: (
         <>
           {/* Rain streak lines */}
-          {[...Array(20)].map((_, i) => (
+          {RAIN_STREAKS.map((s, i) => (
             <div
               key={i}
               className="absolute w-px bg-gradient-to-b from-transparent via-white/8 to-transparent"
               style={{
-                height: `${30 + Math.random() * 40}%`,
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 60}%`,
+                height: `${s.height}%`,
+                left: `${s.left}%`,
+                top: `${s.top}%`,
                 transform: "rotate(8deg)",
               }}
             />
@@ -240,19 +250,18 @@ export default function LifestyleSection() {
         <div className="max-w-screen-xl mx-auto">
           <div className="flex items-center justify-between reveal">
             <div className="flex items-center gap-4">
-              <span className="font-mono text-[9px] tracking-superwide text-laf-iron">03</span>
               <div className="h-px w-12 bg-laf-steel/30" />
               <span className="font-mono text-[9px] tracking-superwide text-laf-zinc">LIFESTYLE</span>
             </div>
             <span className="font-mono text-[9px] tracking-wider text-laf-iron hidden md:block">
-              LOOKBOOK — COMING SOON
+              — 
             </span>
           </div>
 
           <div className="mt-12 reveal" style={{ transitionDelay: "0.1s" }}>
             <h2 className="font-display font-light text-4xl md:text-5xl text-laf-offwhite leading-tight tracking-tight max-w-xl">
-              도심에 녹아드는<br />
-              <span className="text-laf-zinc">무채색의 일상</span>
+              후디로 재탄생한<br />
+              <span className="text-laf-zinc">동경심과 꿈</span>
             </h2>
           </div>
         </div>
@@ -294,10 +303,10 @@ export default function LifestyleSection() {
           {/* Caption */}
           <div className="mt-8 flex items-center justify-between reveal">
             <p className="font-mono text-[9px] tracking-wider text-laf-iron">
-              실제 룩북 사진은 론칭 시 업데이트됩니다.
+              -
             </p>
             <p className="font-mono text-[9px] tracking-wider text-laf-iron">
-              SS 2025
+              LAF04
             </p>
           </div>
         </div>
@@ -307,7 +316,7 @@ export default function LifestyleSection() {
       <div className="mt-24 px-6 md:px-10 lg:px-16 border-t border-b border-laf-steel/10 py-16">
         <div className="max-w-screen-xl mx-auto reveal">
           <blockquote className="font-display font-light text-3xl md:text-5xl lg:text-6xl text-laf-offwhite/60 leading-tight tracking-tight text-center">
-            "처음부터 거기 있었던 것처럼."
+            "마치 원래 내 것이었던 듯이"
           </blockquote>
           <p className="font-mono text-[9px] tracking-superwide text-laf-iron text-center mt-6">
             — LOST and FOUND BRAND MANIFESTO

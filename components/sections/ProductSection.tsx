@@ -11,19 +11,29 @@ const VIEW_LABELS: Record<ViewKey, string> = {
   "45": "45°",
 };
 
+interface ColorVariant {
+  prefix: string;
+  color: string;
+  colorKo: string;
+  price: string;
+  details: string[];
+  swatch: string;
+}
+
 interface Product {
   id: string;
   name: string;
   nameKo: string;
-  prefix: string;
-  price: string;
   desc: string;
-  details: string[];
+  colors: ColorVariant[];
 }
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
   const [activeView, setActiveView] = useState<ViewKey>("front");
+  const [activeColorIdx, setActiveColorIdx] = useState(0);
   const [fade, setFade] = useState(true);
+
+  const activeColor = product.colors[activeColorIdx];
 
   const handleViewChange = (view: ViewKey) => {
     if (view === activeView) return;
@@ -34,24 +44,31 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
     }, 150);
   };
 
+  const handleColorChange = (idx: number) => {
+    if (idx === activeColorIdx) return;
+    setFade(false);
+    setTimeout(() => {
+      setActiveColorIdx(idx);
+      setFade(true);
+    }, 150);
+  };
+
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const imageSrc = `${basePath}/images/products/${product.prefix}_${activeView}.jpg`;
-  const isEven = index % 2 === 0;
+  const imageSrc = `${basePath}/images/products/${activeColor.prefix}_${activeView}.jpg`;
 
   return (
     <div
       className="reveal group border-t border-laf-steel/10 pt-10 pb-10"
       style={{ transitionDelay: `${index * 0.1}s` }}
     >
-      {/* Desktop: 이미지-텍스트 2단, 짝수는 이미지 왼쪽 / 홀수는 이미지 오른쪽 */}
-      <div className={`flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-16 ${isEven ? "" : "md:flex-row-reverse"}`}>
+      <div className="flex flex-col md:flex-row gap-6 md:gap-10 lg:gap-16">
 
         {/* Image block */}
         <div className="w-full md:w-[55%] shrink-0">
           <div className="relative aspect-[3/4] overflow-hidden bg-laf-charcoal cursor-pointer">
             <Image
               src={imageSrc}
-              alt={`${product.name} — ${VIEW_LABELS[activeView]}`}
+              alt={`${product.name} ${activeColor.color} — ${VIEW_LABELS[activeView]}`}
               fill
               className="object-cover"
               style={{
@@ -93,9 +110,37 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
         {/* Text block */}
         <div className="flex flex-col justify-between py-2 md:py-6 flex-1">
-          {/* Top: tags */}
+
+          {/* Color tabs */}
+          <div className="mb-8">
+            <p className="font-mono text-[8px] tracking-superwide text-laf-iron/50 mb-3">COLOR</p>
+            <div className="flex gap-2 flex-wrap">
+              {product.colors.map((c, idx) => (
+                <button
+                  key={c.prefix}
+                  onClick={() => handleColorChange(idx)}
+                  className={`flex items-center gap-2 font-mono text-[8px] tracking-superwide px-3 py-2 transition-all duration-200 border ${
+                    activeColorIdx === idx
+                      ? "border-laf-zinc/60 text-laf-offwhite"
+                      : "border-laf-steel/20 text-laf-iron hover:border-laf-steel/50 hover:text-laf-zinc"
+                  }`}
+                >
+                  <span
+                    className="w-2.5 h-2.5 rounded-full shrink-0"
+                    style={{
+                      backgroundColor: c.swatch,
+                      boxShadow: c.prefix === "WH" ? "inset 0 0 0 1px rgba(255,255,255,0.25)" : undefined,
+                    }}
+                  />
+                  {c.color}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Details tags for active color */}
           <div className="flex flex-wrap gap-2 mb-8">
-            {product.details.map((detail) => (
+            {activeColor.details.map((detail) => (
               <span
                 key={detail}
                 className="font-mono text-[8px] tracking-wider text-laf-zinc border border-laf-steel/30 px-3 py-1.5"
@@ -114,7 +159,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               {product.name}
             </h3>
             <p className="font-mono text-[11px] tracking-wider text-laf-zinc mb-8">
-              {product.nameKo}
+              {product.nameKo} — {activeColor.colorKo}
             </p>
             <p className="font-body text-[14px] text-laf-iron leading-loose max-w-xs">
               {product.desc}
@@ -131,7 +176,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
               <div className="h-px w-4 bg-current transition-all duration-300 group-hover/btn:w-8" />
             </a>
             <p className="font-mono text-[9px] tracking-wider text-laf-iron">
-              {product.price}
+              {activeColor.price}
             </p>
           </div>
         </div>
@@ -164,31 +209,15 @@ export default function ProductSection() {
 
   const products: Product[] = [
     {
-      id: "001",
-      name: "URBAN GREY HOODIE",
-      nameKo: "어반 그레이 후드",
-      prefix: "GR",
-      price: "준비 중",
-      desc: "도심의 콘크리트 색감. 어디서든 자연스럽게.",
-      details: ["RELAXED FIT", "HEAVY COTTON", "GARMENT DYED"],
-    },
-    {
-      id: "002",
-      name: "VOID BLACK HOODIE",
-      nameKo: "보이드 블랙 후드",
-      prefix: "BK",
-      price: "준비 중",
-      desc: "깊은 어둠. 공간에 녹아드는 검정.",
-      details: ["RELAXED FIT", "HEAVY COTTON", "PIGMENT DYED"],
-    },
-    {
-      id: "003",
-      name: "CLEAN WHITE HOODIE",
-      nameKo: "클린 화이트 후드",
-      prefix: "WH",
-      price: "준비 중",
-      desc: "비워낸 듯한 화이트. 가장 솔직한 색.",
-      details: ["RELAXED FIT", "HEAVY COTTON", "ENZYME WASHED"],
+      id: "LAF04",
+      name: "LAF04 LARGE FIT HOODIE",
+      nameKo: "라지핏 후디",
+      desc: "어린시절 미디어를 통해 봤던 농구 스타들의 사진속 후디. 그 여유로운 실루엣은 선수들을 더욱 멋져보이게 했습니다. LAF04는 그 기억을 가장 이상적인 형태로 실현해냈습니다.",
+      colors: [
+        { prefix: "GR", color: "CHARCOAL", colorKo: "차콜", price: "11.9", details: ["LARGE FIT", "HEAVY COTTON", "GARMENT DYED"], swatch: "#4a4a4a" },
+        { prefix: "BK", color: "BLACK", colorKo: "블랙", price: "10.9", details: ["LARGE FIT", "HEAVY COTTON", "PIGMENT DYED"], swatch: "#1a1a1a" },
+        { prefix: "WH", color: "WHITE", colorKo: "화이트", price: "10.9", details: ["LARGE FIT", "HEAVY COTTON", "ENZYME WASHED"], swatch: "#e8e8e8" },
+      ],
     },
   ];
 
@@ -202,11 +231,10 @@ export default function ProductSection() {
         {/* Section header */}
         <div className="flex items-center justify-between mb-20 reveal">
           <div className="flex items-center gap-4">
-            <span className="font-mono text-[9px] tracking-superwide text-laf-iron">02</span>
             <div className="h-px w-12 bg-laf-steel/30" />
             <span className="font-mono text-[9px] tracking-superwide text-laf-zinc">COLLECTION</span>
           </div>
-          <span className="font-mono text-[9px] tracking-wider text-laf-iron">SS 2025</span>
+          <span className="font-mono text-[9px] tracking-wider text-laf-iron">LAF04</span>
         </div>
 
         {/* Products list — 1열 세로 */}

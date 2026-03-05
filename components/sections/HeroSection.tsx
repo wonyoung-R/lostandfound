@@ -50,7 +50,7 @@ export default function HeroSection() {
           <div className="flex items-center gap-3 mb-12 animate-fade-in">
             <div className="w-8 h-px bg-laf-steel" />
             <span className="font-mono text-[9px] tracking-superwide text-laf-zinc uppercase">
-              Seoul — 2025 — Urban Essentials
+              2023 — Urban Essentials
             </span>
           </div>
 
@@ -86,10 +86,10 @@ export default function HeroSection() {
             style={{ animationDelay: "0.5s" }}
           >
             <p className="font-mono text-[11px] tracking-wider text-laf-zinc leading-loose max-w-xs">
-              도심의 라이프스타일에<br />
-              원래 있던 것처럼.<br />
+              라이프스타일 속<br />
+              나의 방식과 스타일을 <br />
               <br />
-              루즈하게, 자연스럽게.
+              찾아가는 곳
             </p>
 
             <div className="flex flex-col items-start md:items-end gap-4">
@@ -101,7 +101,7 @@ export default function HeroSection() {
                 <span className="w-4 h-px bg-current transition-all duration-300 group-hover:w-8" />
               </a>
               <span className="font-mono text-[9px] tracking-wider text-laf-iron">
-                SS 2025 — LAUNCHING SOON
+                LAF04 — LAUNCHING SOON
               </span>
             </div>
           </div>
@@ -113,7 +113,7 @@ export default function HeroSection() {
         <div className="marquee-track">
           {Array(6).fill(null).map((_, i) => (
             <span key={i} className="inline-block font-mono text-[9px] tracking-superwide text-laf-iron px-8">
-              LOST AND FOUND — URBAN ESSENTIALS — SEOUL — SS 25 — 유실물 보관소 — LOST AND FOUND —&nbsp;
+              LOST AND FOUND — URBAN ESSENTIALS — 유실물 보관소 — LOST AND FOUND —&nbsp;
             </span>
           ))}
         </div>
