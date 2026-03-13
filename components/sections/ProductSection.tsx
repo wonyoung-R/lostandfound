@@ -71,29 +71,59 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
         {/* Image block */}
         <div className="w-full md:w-[55%] shrink-0">
-          <div className="relative aspect-[3/4] overflow-hidden bg-laf-charcoal cursor-pointer">
-            <Image
-              src={imageSrc}
-              alt={`${product.name} ${activeColor.color} — ${VIEW_LABELS[activeView]}`}
-              fill
-              className="object-cover"
-              style={{
-                opacity: fade ? 1 : 0,
-                transition: "opacity 0.15s ease",
-              }}
-              sizes="(max-width: 768px) 100vw, 55vw"
-              priority={index === 0}
-            />
+          <div className="relative aspect-[3/4] bg-laf-charcoal cursor-pointer">
+            {activeView === "detail" ? (
+              /* Detail view: scrollable container for long spec images */
+              <div
+                className="absolute inset-0 overflow-y-auto overflow-x-hidden scrollbar-thin"
+                style={{
+                  opacity: fade ? 1 : 0,
+                  transition: "opacity 0.15s ease",
+                }}
+              >
+                <Image
+                  src={imageSrc}
+                  alt={`${product.name} ${activeColor.color} — DETAIL`}
+                  width={1200}
+                  height={3000}
+                  className="w-full h-auto"
+                  sizes="(max-width: 768px) 100vw, 55vw"
+                />
+              </div>
+            ) : (
+              /* Normal view: fill container */
+              <Image
+                src={imageSrc}
+                alt={`${product.name} ${activeColor.color} — ${VIEW_LABELS[activeView]}`}
+                fill
+                className="object-cover"
+                style={{
+                  opacity: fade ? 1 : 0,
+                  transition: "opacity 0.15s ease",
+                }}
+                sizes="(max-width: 768px) 100vw, 55vw"
+                priority={index === 0}
+              />
+            )}
 
             {/* Hover overlay */}
-            <div className="absolute inset-0 bg-laf-black/0 group-hover:bg-laf-black/10 transition-all duration-500 z-20" />
+            <div className="absolute inset-0 bg-laf-black/0 group-hover:bg-laf-black/10 transition-all duration-500 z-20 pointer-events-none" />
 
             {/* Product number badge */}
-            <div className="absolute top-6 left-6 z-30">
+            <div className="absolute top-6 left-6 z-30 pointer-events-none">
               <span className="font-mono text-[9px] tracking-superwide text-laf-zinc drop-shadow">
                 — {product.id}
               </span>
             </div>
+
+            {/* Scroll hint for detail view */}
+            {activeView === "detail" && (
+              <div className="absolute top-6 right-6 z-30 pointer-events-none">
+                <span className="font-mono text-[8px] tracking-superwide text-laf-zinc/60 bg-laf-black/40 px-2 py-1">
+                  SCROLL ↕
+                </span>
+              </div>
+            )}
 
             {/* View switcher — bottom left */}
             <div className="absolute bottom-6 left-6 z-30 flex gap-1">
@@ -125,10 +155,10 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
                 <button
                   key={c.prefix}
                   onClick={() => handleColorChange(idx)}
-                  className={`flex items-center gap-2 font-mono text-[8px] tracking-superwide px-3 py-2 transition-all duration-200 border ${
+                  className={`flex items-center gap-2 font-mono text-[9px] tracking-superwide px-3 py-2 transition-all duration-200 border ${
                     activeColorIdx === idx
-                      ? "border-laf-zinc/60 text-laf-offwhite"
-                      : "border-laf-steel/20 text-laf-iron hover:border-laf-steel/50 hover:text-laf-zinc"
+                      ? "border-laf-ash/60 text-laf-offwhite"
+                      : "border-laf-steel/30 text-laf-ash hover:border-laf-ash/50 hover:text-laf-offwhite"
                   }`}
                 >
                   <span
