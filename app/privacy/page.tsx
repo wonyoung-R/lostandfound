@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "개인정보처리방침",
+  description: "LOST and FOUND 개인정보처리방침. 웨이트리스트 등록 시 수집하는 개인정보 및 이용 목적에 대해 안내합니다.",
+  alternates: { canonical: "/privacy" },
+};
 
 export default function PrivacyPage() {
   return (

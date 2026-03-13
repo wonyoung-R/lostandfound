@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "이용약관",
+  description: "LOST and FOUND 웹사이트 이용약관. 서비스 이용 조건 및 지식재산권에 대해 안내합니다.",
+  alternates: { canonical: "/terms" },
+};
 
 export default function TermsPage() {
   return (

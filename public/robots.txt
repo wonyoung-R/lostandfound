@@ -1,0 +1,7 @@
+# LOST and FOUND — robots.txt
+User-agent: *
+Allow: /
+Disallow: /_next/
+Disallow: /api/
+
+Sitemap: https://laf2023.com/sitemap.xml
