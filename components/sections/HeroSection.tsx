@@ -93,15 +93,26 @@ export default function HeroSection() {
             </p>
 
             <div className="flex flex-col items-start md:items-end gap-4">
-              <a
-                href="#collection"
-                className="group inline-flex items-center gap-4 font-mono text-[10px] tracking-superwide text-laf-offwhite border border-laf-steel/40 px-8 py-4 hover:bg-laf-offwhite hover:text-laf-black transition-all duration-300"
-              >
-                VIEW COLLECTION
-                <span className="w-4 h-px bg-current transition-all duration-300 group-hover:w-8" />
-              </a>
+              <div className="flex gap-3">
+                <a
+                  href="https://litt.ly/lostandfound"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group inline-flex items-center gap-4 font-mono text-[10px] tracking-superwide text-laf-black bg-laf-offwhite px-8 py-4 hover:bg-laf-ash transition-all duration-300"
+                >
+                  SHOP NOW
+                  <span className="w-4 h-px bg-current transition-all duration-300 group-hover:w-8" />
+                </a>
+                <a
+                  href="#collection"
+                  className="group inline-flex items-center gap-4 font-mono text-[10px] tracking-superwide text-laf-offwhite border border-laf-steel/40 px-8 py-4 hover:bg-laf-offwhite hover:text-laf-black transition-all duration-300"
+                >
+                  VIEW COLLECTION
+                  <span className="w-4 h-px bg-current transition-all duration-300 group-hover:w-8" />
+                </a>
+              </div>
               <span className="font-mono text-[9px] tracking-wider text-laf-iron">
-                LAF04 — LAUNCHING SOON
+                LAF04 — NOW AVAILABLE
               </span>
             </div>
           </div>

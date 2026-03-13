@@ -1,3 +1,8 @@
+import Link from "next/link";
+
+const SHOP_URL = "https://litt.ly/lostandfound";
+const INSTAGRAM_URL = "https://www.instagram.com/_lost_and_found_2023/";
+
 export default function Footer() {
   return (
     <footer className="bg-laf-void border-t border-laf-steel/10 py-16 px-6 md:px-10 lg:px-16">
@@ -21,22 +26,25 @@ export default function Footer() {
               NAVIGATE
             </h4>
             <ul className="space-y-3">
-              {["COLLECTION", "BRAND STORY", "LOOKBOOK", "WAITLIST"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href="#"
-                      className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {[
+                { label: "COLLECTION", href: "#collection" },
+                { label: "BRAND STORY", href: "#story" },
+                { label: "LOOKBOOK", href: "#lookbook" },
+                { label: "WAITLIST", href: "#waitlist" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Contact */}
+          {/* Contact & Shop */}
           <div>
             <h4 className="font-mono text-[9px] tracking-superwide text-laf-zinc mb-6">
               CONTACT
@@ -52,10 +60,22 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="#"
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
                 >
                   INSTAGRAM
+                </a>
+              </li>
+              <li>
+                <a
+                  href={SHOP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
+                >
+                  ONLINE STORE
                 </a>
               </li>
             </ul>
@@ -68,18 +88,18 @@ export default function Footer() {
             © 2025 LOST and FOUND. ALL ITEMS RESERVED.
           </p>
           <div className="flex gap-6">
-            <a
-              href="#"
+            <Link
+              href="/privacy"
               className="font-mono text-[9px] tracking-wider text-laf-iron hover:text-laf-ash transition-colors duration-200"
             >
               PRIVACY
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/terms"
               className="font-mono text-[9px] tracking-wider text-laf-iron hover:text-laf-ash transition-colors duration-200"
             >
               TERMS
-            </a>
+            </Link>
           </div>
         </div>
       </div>

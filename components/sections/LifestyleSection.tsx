@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useReveal } from "@/hooks/useReveal";
 
 // 서버/클라이언트 hydration 불일치 방지 — Math.random() 결과를 모듈 레벨 상수로 고정
 const BUILDING_WINDOWS = [60, 85, 70, 100, 45, 75, 55, 90, 65].map(() =>
@@ -219,25 +219,7 @@ function UrbanPlaceholder({
 }
 
 export default function LifestyleSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.05 }
-    );
-
-    const reveals = sectionRef.current?.querySelectorAll(".reveal");
-    reveals?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal(0.05);
 
   return (
     <section

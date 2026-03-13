@@ -43,7 +43,6 @@ export default function RootLayout({
   return (
     <html
       lang="ko"
-      suppressHydrationWarning
       className={`${spaceGrotesk.variable} ${notoSansKR.variable}`}
     >
       <body className="bg-laf-black antialiased font-body">

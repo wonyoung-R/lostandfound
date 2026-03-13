@@ -1,28 +1,10 @@
 "use client";
 
-import { useEffect, useRef } from "react";
 import LostTag from "@/components/ui/LostTag";
+import { useReveal } from "@/hooks/useReveal";
 
 export default function BrandStorySection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-
-    const reveals = sectionRef.current?.querySelectorAll(".reveal");
-    reveals?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal(0.15);
 
   return (
     <section
@@ -78,7 +60,7 @@ export default function BrandStorySection() {
             </p>
             <p className="font-body text-laf-zinc leading-[2] text-[14px] mb-8">
               어릴적의 꿈, 동경했던 누군가, 그리고 이루지 못한 꿈처럼<br />
-              지금의 나를 구성하는 것드을 옷으로서 실현하고자 합니다. 
+              지금의 나를 구성하는 것들을 옷으로서 실현하고자 합니다.
             </p>
           </div>
         </div>

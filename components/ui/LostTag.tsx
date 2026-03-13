@@ -1,3 +1,7 @@
+"use client";
+
+import { useState, useEffect } from "react";
+
 // 유실물 보관증 태그 컴포넌트 — 브랜드 시그니처 UI
 export default function LostTag({
   itemNo = "LF-2025-001",
@@ -10,8 +14,14 @@ export default function LostTag({
   status?: string;
   className?: string;
 }) {
-  const today = new Date();
-  const dateStr = `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, "0")}.${String(today.getDate()).padStart(2, "0")}`;
+  const [dateStr, setDateStr] = useState("----.--.--");
+
+  useEffect(() => {
+    const today = new Date();
+    setDateStr(
+      `${today.getFullYear()}.${String(today.getMonth() + 1).padStart(2, "0")}.${String(today.getDate()).padStart(2, "0")}`
+    );
+  }, []);
 
   return (
     <div

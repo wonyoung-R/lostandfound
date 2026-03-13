@@ -34,7 +34,7 @@ export default function Header() {
             {/* Logo */}
             <a href="#" className="flex items-center">
               <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logo/lkogo.png`}
+                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logo/logo.png`}
                 alt="L&F"
                 width={80}
                 height={32}
@@ -109,7 +109,7 @@ export default function Header() {
           ))}
         </nav>
         <div className="mt-16 font-mono text-[10px] tracking-widest text-laf-steel">
-          LOST and FOUND — dfsafdsafdfdf
+          LOST and FOUND — SS 2025
         </div>
       </div>
     </>

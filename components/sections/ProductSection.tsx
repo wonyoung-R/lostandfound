@@ -1,14 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
+import { useReveal } from "@/hooks/useReveal";
 
-type ViewKey = "front" | "back" | "45";
+type ViewKey = "front" | "back" | "45" | "detail";
 
 const VIEW_LABELS: Record<ViewKey, string> = {
   front: "FRONT",
   back: "BACK",
   "45": "45°",
+  detail: "DETAIL",
 };
 
 interface ColorVariant {
@@ -27,6 +29,8 @@ interface Product {
   desc: string;
   colors: ColorVariant[];
 }
+
+const SHOP_URL = "https://litt.ly/lostandfound";
 
 function ProductCard({ product, index }: { product: Product; index: number }) {
   const [activeView, setActiveView] = useState<ViewKey>("front");
@@ -54,7 +58,10 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
   };
 
   const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-  const imageSrc = `${basePath}/images/products/${activeColor.prefix}_${activeView}.jpg`;
+  const imageSrc =
+    activeView === "detail"
+      ? `${basePath}/images/products/${activeColor.prefix}_specific.jpg`
+      : `${basePath}/images/products/${activeColor.prefix}_${activeView}.jpg`;
 
   return (
     <div
@@ -91,7 +98,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
             {/* View switcher — bottom left */}
             <div className="absolute bottom-6 left-6 z-30 flex gap-1">
-              {(["front", "back", "45"] as ViewKey[]).map((view) => (
+              {(["front", "back", "45", "detail"] as ViewKey[]).map((view) => (
                 <button
                   key={view}
                   onClick={() => handleViewChange(view)}
@@ -166,18 +173,31 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             </p>
           </div>
 
-          {/* Bottom: price + CTA */}
-          <div className="mt-10 flex items-end justify-between">
-            <a
-              href="#waitlist"
-              className="group/btn inline-flex items-center gap-4 font-mono text-[9px] tracking-superwide text-laf-zinc hover:text-laf-offwhite transition-colors duration-200 border border-laf-steel/30 hover:border-laf-zinc/50 px-6 py-3"
-            >
-              <span>NOTIFY ME</span>
-              <div className="h-px w-4 bg-current transition-all duration-300 group-hover/btn:w-8" />
-            </a>
-            <p className="font-mono text-[9px] tracking-wider text-laf-iron">
-              {activeColor.price}
-            </p>
+          {/* Bottom: price + CTAs */}
+          <div className="mt-10 flex flex-col gap-4">
+            <div className="flex items-end justify-between">
+              <div className="flex gap-3">
+                <a
+                  href={SHOP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/btn inline-flex items-center gap-4 font-mono text-[9px] tracking-superwide text-laf-offwhite bg-laf-offwhite/10 hover:bg-laf-offwhite hover:text-laf-black transition-all duration-300 border border-laf-zinc/50 px-6 py-3"
+                >
+                  <span>PURCHASE</span>
+                  <div className="h-px w-4 bg-current transition-all duration-300 group-hover/btn:w-8" />
+                </a>
+                <a
+                  href="#waitlist"
+                  className="group/btn inline-flex items-center gap-4 font-mono text-[9px] tracking-superwide text-laf-zinc hover:text-laf-offwhite transition-colors duration-200 border border-laf-steel/30 hover:border-laf-zinc/50 px-6 py-3"
+                >
+                  <span>NOTIFY ME</span>
+                  <div className="h-px w-4 bg-current transition-all duration-300 group-hover/btn:w-8" />
+                </a>
+              </div>
+              <p className="font-mono text-[9px] tracking-wider text-laf-iron">
+                {activeColor.price}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -187,25 +207,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 }
 
 export default function ProductSection() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    const reveals = sectionRef.current?.querySelectorAll(".reveal");
-    reveals?.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal(0.1);
 
   const products: Product[] = [
     {
@@ -237,7 +239,7 @@ export default function ProductSection() {
           <span className="font-mono text-[9px] tracking-wider text-laf-iron">LAF04</span>
         </div>
 
-        {/* Products list — 1열 세로 */}
+        {/* Products list */}
         <div className="flex flex-col">
           {products.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
@@ -246,10 +248,20 @@ export default function ProductSection() {
 
         {/* Collection note */}
         <div className="mt-16 pt-12 border-t border-laf-steel/10 reveal">
-          <p className="font-mono text-[10px] tracking-wider text-laf-iron text-center leading-loose">
-            SS 2025 COLLECTION — LAUNCHING SOON<br />
-            웨이트리스트에 등록하고 가장 먼저 소식을 받으세요.
-          </p>
+          <div className="text-center">
+            <p className="font-mono text-[10px] tracking-wider text-laf-iron leading-loose mb-8">
+              SS 2025 COLLECTION — NOW AVAILABLE
+            </p>
+            <a
+              href={SHOP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-4 font-mono text-[10px] tracking-superwide text-laf-offwhite border border-laf-steel/40 px-10 py-4 hover:bg-laf-offwhite hover:text-laf-black transition-all duration-300"
+            >
+              SHOP NOW
+              <span className="w-4 h-px bg-current transition-all duration-300 group-hover:w-8" />
+            </a>
+          </div>
         </div>
       </div>
     </section>

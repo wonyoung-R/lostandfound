@@ -1,27 +1,14 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
+import { useReveal } from "@/hooks/useReveal";
 
 export default function WaitlistSection() {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
-        });
-      },
-      { threshold: 0.1 }
-    );
-    const reveals = sectionRef.current?.querySelectorAll(".reveal");
-    reveals?.forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
+  const sectionRef = useReveal(0.1);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -38,12 +25,13 @@ export default function WaitlistSection() {
         setStatus("error");
         return;
       }
-      await fetch(scriptUrl, {
+      const res = await fetch(scriptUrl, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, name, submittedAt: new Date().toISOString() }),
+        redirect: "follow",
       });
+      if (!res.ok) throw new Error("요청 실패");
       setStatus("success");
     } catch {
       setErrorMsg("네트워크 오류가 발생했습니다. 다시 시도해주세요.");
@@ -91,7 +79,7 @@ export default function WaitlistSection() {
               먼저<br />
               만나보세요.
             </h2>
-            
+
           </div>
 
           {/* Right: Form */}
