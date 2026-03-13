@@ -19,7 +19,7 @@ export default function BrandStorySection() {
         {/* Section header */}
         <div className="flex items-center gap-4 mb-20 reveal">
           <div className="h-px w-12 bg-laf-steel/30" />
-          <span className="font-mono text-[9px] tracking-superwide text-laf-zinc">
+          <span className="font-mono text-[9px] tracking-superwide text-laf-silver">
             BRAND STORY
           </span>
         </div>
@@ -44,7 +44,7 @@ export default function BrandStorySection() {
                 </h2>
                 <div className="mt-6 flex items-center gap-3">
                   <div className="w-6 h-px bg-laf-steel/40" />
-                  <span className="font-mono text-[9px] tracking-widest text-laf-steel italic">
+                  <span className="font-mono text-[9px] tracking-widest text-laf-zinc italic">
                     Lost and Found
                   </span>
                 </div>
@@ -58,7 +58,7 @@ export default function BrandStorySection() {
               유실물 보관소라는 의미의 LOST and FOUND는 <br />
               마치 원래 내것이었던 것처럼 자연스러운 것들을 추구합니다.
             </p>
-            <p className="font-body text-laf-zinc leading-[2] text-[14px] mb-8">
+            <p className="font-body text-laf-silver leading-[2] text-[14px] mb-8">
               어릴적의 꿈, 동경했던 누군가, 그리고 이루지 못한 꿈처럼<br />
               지금의 나를 구성하는 것들을 옷으로서 실현하고자 합니다.
             </p>

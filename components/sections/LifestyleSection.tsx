@@ -233,9 +233,9 @@ export default function LifestyleSection() {
           <div className="flex items-center justify-between reveal">
             <div className="flex items-center gap-4">
               <div className="h-px w-12 bg-laf-steel/30" />
-              <span className="font-mono text-[9px] tracking-superwide text-laf-zinc">LIFESTYLE</span>
+              <span className="font-mono text-[9px] tracking-superwide text-laf-silver">LIFESTYLE</span>
             </div>
-            <span className="font-mono text-[9px] tracking-wider text-laf-iron hidden md:block">
+            <span className="font-mono text-[9px] tracking-wider text-laf-ash hidden md:block">
               — 
             </span>
           </div>
@@ -243,7 +243,7 @@ export default function LifestyleSection() {
           <div className="mt-12 reveal" style={{ transitionDelay: "0.1s" }}>
             <h2 className="font-display font-light text-4xl md:text-5xl text-laf-offwhite leading-tight tracking-tight max-w-xl">
               후디로 재탄생한<br />
-              <span className="text-laf-zinc">동경심과 꿈</span>
+              <span className="text-laf-silver">동경심과 꿈</span>
             </h2>
           </div>
         </div>
@@ -284,10 +284,10 @@ export default function LifestyleSection() {
 
           {/* Caption */}
           <div className="mt-8 flex items-center justify-between reveal">
-            <p className="font-mono text-[9px] tracking-wider text-laf-iron">
+            <p className="font-mono text-[9px] tracking-wider text-laf-ash">
               -
             </p>
-            <p className="font-mono text-[9px] tracking-wider text-laf-iron">
+            <p className="font-mono text-[9px] tracking-wider text-laf-ash">
               LAF04
             </p>
           </div>
@@ -300,7 +300,7 @@ export default function LifestyleSection() {
           <blockquote className="font-display font-light text-3xl md:text-5xl lg:text-6xl text-laf-offwhite/60 leading-tight tracking-tight text-center">
             "마치 원래 내 것이었던 듯이"
           </blockquote>
-          <p className="font-mono text-[9px] tracking-superwide text-laf-iron text-center mt-6">
+          <p className="font-mono text-[9px] tracking-superwide text-laf-ash text-center mt-6">
             — LOST and FOUND BRAND MANIFESTO
           </p>
         </div>

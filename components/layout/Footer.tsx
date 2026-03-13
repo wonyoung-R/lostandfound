@@ -12,17 +12,17 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="font-display text-2xl font-light text-laf-offwhite tracking-widest mb-4">
               LOST<br />
-              <span className="text-laf-zinc">and</span><br />
+              <span className="text-laf-silver">and</span><br />
               FOUND
             </div>
-            <p className="font-mono text-[10px] tracking-wider text-laf-steel leading-relaxed max-w-xs">
+            <p className="font-mono text-[10px] tracking-wider text-laf-zinc leading-relaxed max-w-xs">
               마치 원래 내 것이었던 듯이.
             </p>
           </div>
 
           {/* Links */}
           <div>
-            <h4 className="font-mono text-[9px] tracking-superwide text-laf-zinc mb-6">
+            <h4 className="font-mono text-[9px] tracking-superwide text-laf-silver mb-6">
               NAVIGATE
             </h4>
             <ul className="space-y-3">
@@ -35,7 +35,7 @@ export default function Footer() {
                 <li key={item.label}>
                   <a
                     href={item.href}
-                    className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
+                    className="font-mono text-[11px] tracking-wider text-laf-zinc hover:text-laf-offwhite transition-colors duration-200"
                   >
                     {item.label}
                   </a>
@@ -46,14 +46,14 @@ export default function Footer() {
 
           {/* Contact & Shop */}
           <div>
-            <h4 className="font-mono text-[9px] tracking-superwide text-laf-zinc mb-6">
+            <h4 className="font-mono text-[9px] tracking-superwide text-laf-silver mb-6">
               CONTACT
             </h4>
             <ul className="space-y-3">
               <li>
                 <a
                   href="mailto:hello@lostandfound.kr"
-                  className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
+                  className="font-mono text-[11px] tracking-wider text-laf-zinc hover:text-laf-offwhite transition-colors duration-200"
                 >
                   hello@lostandfound.kr
                 </a>
@@ -63,7 +63,7 @@ export default function Footer() {
                   href={INSTAGRAM_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
+                  className="font-mono text-[11px] tracking-wider text-laf-zinc hover:text-laf-offwhite transition-colors duration-200"
                 >
                   INSTAGRAM
                 </a>
@@ -73,7 +73,7 @@ export default function Footer() {
                   href={SHOP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-[11px] tracking-wider text-laf-steel hover:text-laf-ash transition-colors duration-200"
+                  className="font-mono text-[11px] tracking-wider text-laf-zinc hover:text-laf-offwhite transition-colors duration-200"
                 >
                   ONLINE STORE
                 </a>
@@ -84,19 +84,19 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="pt-8 border-t border-laf-steel/10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-          <p className="font-mono text-[9px] tracking-wider text-laf-iron">
+          <p className="font-mono text-[9px] tracking-wider text-laf-ash">
             © 2025 LOST and FOUND. ALL ITEMS RESERVED.
           </p>
           <div className="flex gap-6">
             <Link
               href="/privacy"
-              className="font-mono text-[9px] tracking-wider text-laf-iron hover:text-laf-ash transition-colors duration-200"
+              className="font-mono text-[9px] tracking-wider text-laf-ash hover:text-laf-offwhite transition-colors duration-200"
             >
               PRIVACY
             </Link>
             <Link
               href="/terms"
-              className="font-mono text-[9px] tracking-wider text-laf-iron hover:text-laf-ash transition-colors duration-200"
+              className="font-mono text-[9px] tracking-wider text-laf-ash hover:text-laf-offwhite transition-colors duration-200"
             >
               TERMS
             </Link>

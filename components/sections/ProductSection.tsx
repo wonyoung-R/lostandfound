@@ -111,7 +111,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
             {/* Product number badge */}
             <div className="absolute top-6 left-6 z-30 pointer-events-none">
-              <span className="font-mono text-[9px] tracking-superwide text-laf-zinc drop-shadow">
+              <span className="font-mono text-[9px] tracking-superwide text-laf-silver drop-shadow">
                 — {product.id}
               </span>
             </div>
@@ -134,7 +134,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
                   className={`font-mono text-[8px] tracking-superwide px-2.5 py-1.5 transition-all duration-200 ${
                     activeView === view
                       ? "bg-laf-offwhite text-laf-black"
-                      : "bg-laf-black/50 text-laf-iron border border-laf-iron/30 hover:text-laf-zinc hover:border-laf-zinc/50"
+                      : "bg-laf-black/50 text-laf-ash border border-laf-ash/30 hover:text-laf-silver hover:border-laf-silver/50"
                   }`}
                 >
                   {VIEW_LABELS[view]}
@@ -149,7 +149,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
           {/* Color tabs */}
           <div className="mb-8">
-            <p className="font-mono text-[8px] tracking-superwide text-laf-iron/50 mb-3">COLOR</p>
+            <p className="font-mono text-[8px] tracking-superwide text-laf-ash/50 mb-3">COLOR</p>
             <div className="flex gap-2 flex-wrap">
               {product.colors.map((c, idx) => (
                 <button
@@ -179,7 +179,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             {activeColor.details.map((detail) => (
               <span
                 key={detail}
-                className="font-mono text-[8px] tracking-wider text-laf-zinc border border-laf-steel/30 px-3 py-1.5"
+                className="font-mono text-[8px] tracking-wider text-laf-silver border border-laf-zinc/30 px-3 py-1.5"
               >
                 {detail}
               </span>
@@ -188,16 +188,16 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
 
           {/* Middle: title & desc */}
           <div className="flex-1">
-            <p className="font-mono text-[9px] tracking-superwide text-laf-iron mb-4">
+            <p className="font-mono text-[9px] tracking-superwide text-laf-ash mb-4">
               {product.id}
             </p>
             <h3 className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-laf-offwhite tracking-tight leading-none mb-3">
               {product.name}
             </h3>
-            <p className="font-mono text-[11px] tracking-wider text-laf-zinc mb-8">
+            <p className="font-mono text-[11px] tracking-wider text-laf-silver mb-8">
               {product.nameKo} — {activeColor.colorKo}
             </p>
-            <p className="font-body text-[14px] text-laf-iron leading-loose max-w-xs">
+            <p className="font-body text-[14px] text-laf-ash leading-loose max-w-xs">
               {product.desc}
             </p>
           </div>
@@ -217,13 +217,13 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
                 </a>
                 <a
                   href="#waitlist"
-                  className="group/btn inline-flex items-center gap-4 font-mono text-[9px] tracking-superwide text-laf-zinc hover:text-laf-offwhite transition-colors duration-200 border border-laf-steel/30 hover:border-laf-zinc/50 px-6 py-3"
+                  className="group/btn inline-flex items-center gap-4 font-mono text-[9px] tracking-superwide text-laf-silver hover:text-laf-offwhite transition-colors duration-200 border border-laf-zinc/30 hover:border-laf-silver/50 px-6 py-3"
                 >
                   <span>NOTIFY ME</span>
                   <div className="h-px w-4 bg-current transition-all duration-300 group-hover/btn:w-8" />
                 </a>
               </div>
-              <p className="font-mono text-[9px] tracking-wider text-laf-iron">
+              <p className="font-mono text-[9px] tracking-wider text-laf-ash">
                 {activeColor.price}
               </p>
             </div>
@@ -263,9 +263,9 @@ export default function ProductSection() {
         <div className="flex items-center justify-between mb-20 reveal">
           <div className="flex items-center gap-4">
             <div className="h-px w-12 bg-laf-steel/30" />
-            <span className="font-mono text-[9px] tracking-superwide text-laf-zinc">COLLECTION</span>
+            <span className="font-mono text-[9px] tracking-superwide text-laf-silver">COLLECTION</span>
           </div>
-          <span className="font-mono text-[9px] tracking-wider text-laf-iron">LAF04</span>
+          <span className="font-mono text-[9px] tracking-wider text-laf-ash">LAF04</span>
         </div>
 
         {/* Products list */}
@@ -278,7 +278,7 @@ export default function ProductSection() {
         {/* Collection note */}
         <div className="mt-16 pt-12 border-t border-laf-steel/10 reveal">
           <div className="text-center">
-            <p className="font-mono text-[10px] tracking-wider text-laf-iron leading-loose mb-8">
+            <p className="font-mono text-[10px] tracking-wider text-laf-ash leading-loose mb-8">
               SS 2025 COLLECTION — NOW AVAILABLE
             </p>
             <a

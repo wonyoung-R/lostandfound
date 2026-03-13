@@ -49,7 +49,7 @@ export default function Header() {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="font-mono text-[10px] tracking-superwide text-laf-zinc hover:text-laf-offwhite transition-colors duration-300 link-underline"
+                  className="font-mono text-[10px] tracking-superwide text-laf-silver hover:text-laf-offwhite transition-colors duration-300 link-underline"
                 >
                   {link.label}
                 </a>
@@ -58,7 +58,7 @@ export default function Header() {
 
             {/* Right: Tag */}
             <div className="hidden md:flex items-center gap-4">
-              <span className="font-mono text-[9px] tracking-widest text-laf-steel border border-laf-steel/30 px-3 py-1">
+              <span className="font-mono text-[9px] tracking-widest text-laf-zinc border border-laf-zinc/30 px-3 py-1">
                 SS 25
               </span>
             </div>
@@ -108,7 +108,7 @@ export default function Header() {
             </a>
           ))}
         </nav>
-        <div className="mt-16 font-mono text-[10px] tracking-widest text-laf-steel">
+        <div className="mt-16 font-mono text-[10px] tracking-widest text-laf-zinc">
           LOST and FOUND — SS 2025
         </div>
       </div>

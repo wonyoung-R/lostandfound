@@ -7,12 +7,12 @@ export default function NotFound() {
       {/* Tag */}
       <div className="mb-12 text-center">
         <div className="inline-block border border-laf-steel/30 px-8 py-3 mb-8">
-          <span className="font-mono text-[10px] tracking-superwide text-laf-zinc">
+          <span className="font-mono text-[10px] tracking-superwide text-laf-silver">
             LOST AND FOUND — REPORT
           </span>
         </div>
 
-        <div className="font-mono text-[9px] tracking-superwide text-laf-iron mb-4">
+        <div className="font-mono text-[9px] tracking-superwide text-laf-ash mb-4">
           ITEM STATUS
         </div>
 
@@ -26,7 +26,7 @@ export default function NotFound() {
         <p className="font-display text-2xl font-light text-laf-offwhite mb-4">
           찾을 수 없습니다.
         </p>
-        <p className="font-mono text-[10px] tracking-wider text-laf-zinc leading-loose">
+        <p className="font-mono text-[10px] tracking-wider text-laf-silver leading-loose">
           이 페이지는 유실물 보관소에서도<br />
           찾지 못했습니다.<br />
           <br />
@@ -40,13 +40,13 @@ export default function NotFound() {
       {/* Back link */}
       <Link
         href="/"
-        className="group inline-flex items-center gap-4 font-mono text-[10px] tracking-superwide text-laf-zinc hover:text-laf-offwhite transition-colors duration-200"
+        className="group inline-flex items-center gap-4 font-mono text-[10px] tracking-superwide text-laf-silver hover:text-laf-offwhite transition-colors duration-200"
       >
         <span className="w-6 h-px bg-current transition-all duration-300 group-hover:w-10" />
         RETURN TO RECEPTION
       </Link>
 
-      <div className="mt-16 font-mono text-[8px] tracking-superwide text-laf-iron/30">
+      <div className="mt-16 font-mono text-[8px] tracking-superwide text-laf-ash/30">
         LOST AND FOUND — REFERENCE: PAGE-404-NULL
       </div>
     </div>

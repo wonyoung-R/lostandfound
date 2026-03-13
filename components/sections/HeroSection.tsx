@@ -49,7 +49,7 @@ export default function HeroSection() {
           {/* Tag line */}
           <div className="flex items-center gap-3 mb-12 animate-fade-in">
             <div className="w-8 h-px bg-laf-steel" />
-            <span className="font-mono text-[9px] tracking-superwide text-laf-zinc uppercase">
+            <span className="font-mono text-[9px] tracking-superwide text-laf-silver uppercase">
               2023 — Urban Essentials
             </span>
           </div>
@@ -66,7 +66,7 @@ export default function HeroSection() {
             </div>
             <div className="overflow-hidden flex items-baseline gap-6">
               <span
-                className="block text-[7vw] md:text-[5vw] text-laf-steel font-light italic mb-2 animate-fade-up"
+                className="block text-[7vw] md:text-[5vw] text-laf-zinc font-light italic mb-2 animate-fade-up"
                 style={{ animationDelay: "0.25s" }}
               >
                 and
@@ -85,11 +85,9 @@ export default function HeroSection() {
             className="mt-12 md:mt-16 flex flex-col md:flex-row items-start md:items-end justify-between gap-8 animate-fade-up"
             style={{ animationDelay: "0.5s" }}
           >
-            <p className="font-mono text-[11px] tracking-wider text-laf-zinc leading-loose max-w-xs">
+            <p className="font-mono text-[11px] tracking-wider text-laf-silver leading-loose max-w-xs">
               라이프스타일 속<br />
-              나의 방식과 스타일을 <br />
-              <br />
-              찾아가는 곳
+              나의 방식과 스타일을 찾아가는 곳
             </p>
 
             <div className="flex flex-col items-start md:items-end gap-4">
@@ -111,7 +109,7 @@ export default function HeroSection() {
                   <span className="w-4 h-px bg-current transition-all duration-300 group-hover:w-8" />
                 </a>
               </div>
-              <span className="font-mono text-[9px] tracking-wider text-laf-iron">
+              <span className="font-mono text-[9px] tracking-wider text-laf-ash">
                 LAF04 — NOW AVAILABLE
               </span>
             </div>
@@ -123,7 +121,7 @@ export default function HeroSection() {
       <div className="relative z-10 border-t border-laf-steel/10 py-4 overflow-hidden">
         <div className="marquee-track">
           {Array(6).fill(null).map((_, i) => (
-            <span key={i} className="inline-block font-mono text-[9px] tracking-superwide text-laf-iron px-8">
+            <span key={i} className="inline-block font-mono text-[9px] tracking-superwide text-laf-ash px-8">
               LOST AND FOUND — URBAN ESSENTIALS — 유실물 보관소 — LOST AND FOUND —&nbsp;
             </span>
           ))}
@@ -141,7 +139,7 @@ export default function HeroSection() {
             }}
           />
         </div>
-        <span className="font-mono text-[8px] tracking-superwide text-laf-iron rotate-90 origin-center mt-2">
+        <span className="font-mono text-[8px] tracking-superwide text-laf-ash rotate-90 origin-center mt-2">
           SCROLL
         </span>
       </div>
