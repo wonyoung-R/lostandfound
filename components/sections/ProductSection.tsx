@@ -57,11 +57,10 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
     }, 150);
   };
 
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
   const imageSrc =
     activeView === "detail"
-      ? `${basePath}/images/products/${activeColor.prefix}_specific.jpg`
-      : `${basePath}/images/products/${activeColor.prefix}_${activeView}.jpg`;
+      ? `/images/products/${activeColor.prefix}_specific.jpg`
+      : `/images/products/${activeColor.prefix}_${activeView}.jpg`;
 
   return (
     <div

@@ -34,7 +34,7 @@ export default function Header() {
             {/* Logo */}
             <a href="#" className="flex items-center">
               <Image
-                src={`${process.env.NEXT_PUBLIC_BASE_PATH ?? ""}/images/logo/logo.png`}
+                src="/images/logo/logo.png"
                 alt="L&F"
                 width={80}
                 height={32}
