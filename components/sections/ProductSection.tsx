@@ -197,7 +197,7 @@ function ProductCard({ product, index }: { product: Product; index: number }) {
             <p className="font-mono text-[11px] tracking-wider text-laf-silver mb-8">
               {product.nameKo} — {activeColor.colorKo}
             </p>
-            <p className="font-body text-[14px] text-laf-ash leading-loose max-w-xs">
+            <p className="font-body text-[clamp(11px,3.3vw,14px)] text-laf-ash leading-loose break-keep max-w-xs">
               {product.desc}
             </p>
           </div>
@@ -243,7 +243,7 @@ export default function ProductSection() {
       id: "LAF04",
       name: "LAF04 LARGE FIT HOODIE",
       nameKo: "라지핏 후디",
-      desc: "어린시절 미디어를 통해 봤던 농구 스타들의 사진속 후디. 그 여유로운 실루엣은 선수들을 더욱 멋져보이게 했습니다. LAF04는 그 기억을 가장 이상적인 형태로 실현해냈습니다.",
+      desc: "어린시절 미디어를 통해 봤던 농구 스타들의 사진속 후디. 그 여유로운 실루엣은 선수들을 더욱 멋져보이게 했습니다. LAF04는 그 기억을 가장 이상적인 형태로 실현했습니다.",
       colors: [
         { prefix: "GR", color: "CHARCOAL", colorKo: "차콜", price: "11.9", details: ["LARGE FIT", "HEAVY COTTON", "GARMENT DYED"], swatch: "#4a4a4a" },
         { prefix: "BK", color: "BLACK", colorKo: "블랙", price: "10.9", details: ["LARGE FIT", "HEAVY COTTON", "PIGMENT DYED"], swatch: "#1a1a1a" },

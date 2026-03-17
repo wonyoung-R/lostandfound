@@ -20,7 +20,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen bg-laf-black overflow-hidden flex flex-col">
+    <section className="relative min-h-dvh bg-laf-black overflow-hidden flex flex-col">
       {/* Background: concrete/city texture */}
       <div className="absolute inset-0 z-0">
         {/* Layered gradient simulating concrete */}
@@ -118,10 +118,10 @@ export default function HeroSection() {
       </div>
 
       {/* Bottom marquee */}
-      <div className="relative z-10 border-t border-laf-steel/10 py-4 overflow-hidden">
+      <div className="relative z-10 border-t border-laf-steel/10 py-2 overflow-hidden leading-tight">
         <div className="marquee-track">
           {Array(6).fill(null).map((_, i) => (
-            <span key={i} className="inline-block font-mono text-[9px] tracking-superwide text-laf-ash px-8">
+            <span key={i} className="inline-block font-mono text-[7px] tracking-superwide text-laf-ash px-6">
               LOST AND FOUND — URBAN ESSENTIALS — 유실물 보관소 — LOST AND FOUND —&nbsp;
             </span>
           ))}

@@ -54,11 +54,11 @@ export default function BrandStorySection() {
 
           {/* Right: Story text */}
           <div className="reveal" style={{ transitionDelay: "0.2s" }}>
-            <p className="font-body text-laf-ash leading-[2] text-[15px] mb-8">
+            <p className="font-body text-laf-ash leading-[2] text-[clamp(12px,3.5vw,15px)] break-keep mb-8">
               유실물 보관소라는 의미의 LOST and FOUND는 <br />
               마치 원래 내것이었던 것처럼 자연스러운 것들을 추구합니다.
             </p>
-            <p className="font-body text-laf-silver leading-[2] text-[14px] mb-8">
+            <p className="font-body text-laf-silver leading-[2] text-[clamp(11px,3.3vw,14px)] break-keep mb-8">
               어릴적의 꿈, 동경했던 누군가, 그리고 이루지 못한 꿈처럼<br />
               지금의 나를 구성하는 것들을 옷으로서 실현하고자 합니다.
             </p>
