@@ -21,7 +21,7 @@ export default function HeroSection() {
 
   return (
     <>
-    <section className="relative h-dvh bg-laf-black overflow-hidden flex flex-col">
+    <section className="relative bg-laf-black overflow-hidden flex flex-col" style={{ height: 'calc(100dvh + env(safe-area-inset-bottom))' }}>
       {/* Background: concrete/city texture */}
       <div className="absolute inset-0 z-0">
         {/* Layered gradient simulating concrete */}
