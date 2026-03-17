@@ -20,6 +20,7 @@ export default function HeroSection() {
   }, []);
 
   return (
+    <>
     <section className="relative h-dvh bg-laf-black overflow-hidden flex flex-col">
       {/* Background: concrete/city texture */}
       <div className="absolute inset-0 z-0">
@@ -117,17 +118,6 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* Bottom marquee */}
-      <div className="relative z-10 border-t border-laf-steel/10 py-2 overflow-hidden leading-tight">
-        <div className="marquee-track">
-          {Array(6).fill(null).map((_, i) => (
-            <span key={i} className="inline-block font-mono text-[7px] tracking-superwide text-laf-ash px-6">
-              LOST AND FOUND — URBAN ESSENTIALS — 유실물 보관소 — LOST AND FOUND —&nbsp;
-            </span>
-          ))}
-        </div>
-      </div>
-
       {/* Scroll indicator */}
       <div className="absolute bottom-20 right-10 flex flex-col items-center gap-2 animate-fade-in" style={{ animationDelay: "1s" }}>
         <div className="w-px h-16 bg-gradient-to-b from-transparent to-laf-steel/40 relative overflow-hidden">
@@ -152,5 +142,17 @@ export default function HeroSection() {
         }
       `}</style>
     </section>
+
+    {/* Bottom marquee — hero 영역 밖 */}
+    <div className="relative z-10 bg-laf-black border-t border-laf-steel/10 py-2 overflow-hidden leading-tight">
+      <div className="marquee-track">
+        {Array(6).fill(null).map((_, i) => (
+          <span key={i} className="inline-block font-mono text-[7px] tracking-superwide text-laf-ash px-6">
+            LOST AND FOUND — URBAN ESSENTIALS — 유실물 보관소 — LOST AND FOUND —&nbsp;
+          </span>
+        ))}
+      </div>
+    </div>
+    </>
   );
 }
